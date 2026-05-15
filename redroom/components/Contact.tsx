@@ -123,7 +123,7 @@ export function Contact() {
 
                 <div className="pt-2">
                   <button type="submit" className="btn btn-primary btn-lg">
-                    Send enquiry <span className="arrow">→</span>
+                    Send enquiry
                   </button>
                 </div>
               </form>

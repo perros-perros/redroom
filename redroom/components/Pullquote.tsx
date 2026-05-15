@@ -30,10 +30,10 @@ export function Pullquote() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a href="#contact" className="btn btn-primary btn-lg">
-                Start a project <span className="arrow">→</span>
+                Start a project
               </a>
               <a href="#process" className="btn btn-ghost btn-lg">
-                Or read our process <span className="arrow">→</span>
+                Or read our process
               </a>
             </div>
           </div>

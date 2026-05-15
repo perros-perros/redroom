@@ -85,7 +85,7 @@ export function Projects() {
 
         <div className="mt-12 flex justify-end">
           <a href="#" className="btn btn-ghost btn-md">
-            View all projects <span className="arrow">→</span>
+            View all projects
           </a>
         </div>
       </div>

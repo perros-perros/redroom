@@ -10,7 +10,7 @@ export function Hero() {
 
       {/* Top bar */}
       <div className="relative z-10 mx-auto flex w-full max-w-360 items-start justify-between px-6 pt-8 sm:px-12 sm:pt-10">
-        <span aria-label="Redroom" className="text-burgundy-600 dark:text-bone-50 block">
+        <span aria-label="Redroom" className="text-ink-900 dark:text-bone-50 block">
           <Wordmark className="h-7 w-auto" />
         </span>
         <div className="flex items-center gap-4 sm:gap-6">
@@ -35,7 +35,7 @@ export function Hero() {
           </p> */}
           <div className="d3 reveal mt-10 flex flex-wrap items-center gap-4">
             <a href="#contact" className="btn btn-lg btn-primary">
-              Start a project <span className="arrow">→</span>
+              Start a project
             </a>
             <a href="#projects" className="btn btn-lg btn-on-image">
               See our work
