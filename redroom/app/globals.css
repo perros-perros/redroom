@@ -80,18 +80,10 @@ html.dark body::before {
 
 /* Editorial label */
 .label {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.75rem;
-  line-height: 1;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #7b1f2b;
+  @apply tracking-label text-ink-900 inline-flex items-center gap-3 text-xs leading-none font-medium uppercase;
 }
 html.dark .label {
-  color: #b84954;
+  @apply text-bone-50;
 }
 .label::before {
   content: "";
@@ -146,7 +138,6 @@ html.dark .label-plain {
   cursor: pointer;
   border: 0;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .btn:focus-visible {
   outline: none;
@@ -182,7 +173,6 @@ html.dark .btn:focus-visible {
 }
 .btn-primary:hover {
   background: #9a2d38;
-  transform: translateY(-1px);
 }
 .btn-secondary {
   background: transparent;
@@ -215,15 +205,12 @@ html.dark .btn-ghost {
 html.dark .btn-ghost:hover {
   color: #faf7f2;
 }
+
 .btn-on-image {
-  background: transparent;
-  color: #faf7f2;
-  box-shadow: inset 0 0 0 1px rgba(250, 247, 242, 0.35);
+  @apply text-ink-900 border-bone-50/50 hover:text-ink-900 hover:bg-bone-50 border bg-white/25 transition-all;
 }
-.btn-on-image:hover {
-  background: #faf7f2;
-  color: #0f0e0c;
-  box-shadow: inset 0 0 0 1px #faf7f2;
+html.dark .btn-on-image {
+  @apply text-bone-50 border-bone-50/50 bg-bone-50/10 hover:text-ink-900 hover:bg-bone-50 border;
 }
 
 .btn .arrow {
@@ -294,6 +281,57 @@ html.dark .field-label {
   html {
     scroll-behavior: auto;
   }
+  .hero-asset--reveal,
+  .hero-asset--reveal .hero-asset__inner {
+    animation: none !important;
+  }
+}
+
+/* Hero carousel - shed.design style clip-path wipe + parallax */
+@keyframes hero-asset-clip {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes hero-asset-parallax {
+  from {
+    transform: translate3d(0, 10%, 0) scale(1.04);
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes hero-asset-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0, -4%, 0) scale(1.06);
+  }
+}
+
+.hero-asset {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: clip-path;
+}
+.hero-asset__inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.hero-asset--base .hero-asset__inner {
+  animation: hero-asset-drift 8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.hero-asset--reveal {
+  animation: hero-asset-clip 1400ms cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+.hero-asset--reveal .hero-asset__inner {
+  animation: hero-asset-parallax 1400ms cubic-bezier(0.77, 0, 0.18, 1) forwards;
 }
 
 /* Ensure interactive content sits above the grain overlay */

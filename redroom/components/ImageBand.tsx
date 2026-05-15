@@ -13,12 +13,7 @@ type ImageBandProps = {
   parallaxRange?: number;
 };
 
-export function ImageBand({
-  src,
-  alt,
-  caption,
-  parallaxRange = 160,
-}: ImageBandProps) {
+export function ImageBand({ src, alt, caption, parallaxRange = 160 }: ImageBandProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const parallaxRef = useRef<HTMLDivElement | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -50,7 +45,7 @@ export function ImageBand({
           }
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.15 }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -95,44 +90,28 @@ export function ImageBand({
   const showOpen = reduced || revealed;
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-[100svh] min-h-[560px] overflow-hidden bg-ink-900"
-    >
+    <section ref={sectionRef} className="bg-ink-900 relative h-[100svh] min-h-[560px] w-full overflow-hidden">
       {/* Reveal mask: clip from bottom up on first scroll-in */}
       <div
         aria-hidden="true"
         className="absolute inset-0 overflow-hidden"
         style={{
           clipPath: showOpen ? "inset(0 0 0 0)" : "inset(100% 0 0 0)",
-          transition: reduced
-            ? "none"
-            : "clip-path 1.4s cubic-bezier(.2,.8,.2,1)",
+          transition: reduced ? "none" : "clip-path 1.4s cubic-bezier(.2,.8,.2,1)",
         }}
       >
         {/* Parallax wrapper - oversized so translate never exposes edges */}
-        <div
-          ref={parallaxRef}
-          className="absolute inset-x-0 -inset-y-[14%] will-change-transform"
-        >
+        <div ref={parallaxRef} className="absolute inset-x-0 -inset-y-[14%] will-change-transform">
           {/* Zoom-in from bottom origin on first reveal */}
           <div
             className="relative h-full w-full"
             style={{
               transform: showOpen ? "scale(1)" : "scale(1.2)",
               transformOrigin: "50% 100%",
-              transition: reduced
-                ? "none"
-                : "transform 1.6s cubic-bezier(.2,.8,.2,1)",
+              transition: reduced ? "none" : "transform 1.6s cubic-bezier(.2,.8,.2,1)",
             }}
           >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
           </div>
         </div>
       </div>
@@ -141,21 +120,17 @@ export function ImageBand({
         <>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-900/70 to-transparent"
+            className="from-ink-900/70 pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t to-transparent"
           />
           <div className="absolute inset-x-0 bottom-0">
             <div
-              className={`mx-auto max-w-[1440px] px-6 pb-10 transition-all duration-1000 ease-out sm:px-12 sm:pb-14 ${
-                showOpen
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+              className={`mx-auto max-w-360 px-6 pb-10 transition-all duration-1000 ease-out sm:px-12 sm:pb-14 ${
+                showOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
               }`}
               style={{ transitionDelay: showOpen && !reduced ? "0.6s" : "0s" }}
             >
               <p className="label text-bone-50/90">{caption.label}</p>
-              <p className="mt-4 text-body-lg font-light italic text-bone-50/90">
-                {caption.line}
-              </p>
+              <p className="text-body-lg text-bone-50/90 mt-4 font-light italic">{caption.line}</p>
             </div>
           </div>
         </>

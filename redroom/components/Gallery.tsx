@@ -135,10 +135,7 @@ export function Gallery() {
     setLightboxProject(null);
   }
 
-  const lightboxImages =
-    lightboxProject !== null
-      ? (projects[lightboxProject]?.images ?? null)
-      : null;
+  const lightboxImages = lightboxProject !== null ? (projects[lightboxProject]?.images ?? null) : null;
 
   const lightboxCaption = (i: number) => {
     if (lightboxProject === null) return undefined;
@@ -162,9 +159,7 @@ export function Gallery() {
       const p = max > 0 ? track.scrollLeft / max : 0;
       setProgress(p);
 
-      const cards = Array.from(
-        track.querySelectorAll<HTMLElement>("[data-card]"),
-      );
+      const cards = Array.from(track.querySelectorAll<HTMLElement>("[data-card]"));
       const center = track.scrollLeft + track.clientWidth / 2;
       let closest = 0;
       let closestDist = Infinity;
@@ -289,19 +284,16 @@ export function Gallery() {
   }
 
   return (
-    <section
-      ref={sectionRef}
-      className="border-t border-ink-900/10 dark:border-bone-50/10"
-    >
+    <section ref={sectionRef} className="border-ink-900/10 dark:border-bone-50/10 border-t">
       {/* Header */}
-      <div className="mx-auto max-w-[1440px] px-6 pt-20 sm:px-12 sm:pt-32">
+      <div className="mx-auto max-w-360 px-6 pt-20 sm:px-12 sm:pt-32">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
           <div className="max-w-2xl">
-            <p className="reveal label">(04) - Selected work</p>
+            <p className="reveal label">Selected work</p>
             <h2 className="reveal d1 section-title mt-6 sm:mt-8">
               Four rooms,
               <br />
-              <span className="font-light italic text-burgundy-600 dark:text-burgundy-300">
+              <span className="text-burgundy-600 dark:text-burgundy-300 font-light italic">
                 <span className="sm:hidden">swipe to wander.</span>
                 <span className="hidden sm:inline">drag to wander.</span>
               </span>
@@ -309,15 +301,14 @@ export function Gallery() {
           </div>
           <div className="reveal d2 flex items-center gap-3">
             <span className="text-caption tracking-label text-ink-500 dark:text-bone-50/55">
-              {String(active + 1).padStart(2, "0")} /{" "}
-              {String(projects.length).padStart(2, "0")}
+              {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
             </span>
             <button
               type="button"
               aria-label="Previous project"
               onClick={() => nudge(-1)}
               disabled={active === 0}
-              className="inline-flex size-11 items-center justify-center rounded-full ring-1 ring-ink-900/15 text-ink-900 transition-colors duration-300 hover:bg-ink-900 hover:text-bone-50 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-ink-900 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900 dark:disabled:hover:bg-transparent dark:disabled:hover:text-bone-50"
+              className="ring-ink-900/15 text-ink-900 hover:bg-ink-900 hover:text-bone-50 disabled:hover:text-ink-900 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900 dark:disabled:hover:text-bone-50 inline-flex size-11 items-center justify-center rounded-full ring-1 transition-colors duration-300 disabled:opacity-30 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -336,7 +327,7 @@ export function Gallery() {
               aria-label="Next project"
               onClick={() => nudge(1)}
               disabled={active === projects.length - 1}
-              className="inline-flex size-11 items-center justify-center rounded-full ring-1 ring-ink-900/15 text-ink-900 transition-colors duration-300 hover:bg-ink-900 hover:text-bone-50 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-ink-900 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900 dark:disabled:hover:bg-transparent dark:disabled:hover:text-bone-50"
+              className="ring-ink-900/15 text-ink-900 hover:bg-ink-900 hover:text-bone-50 disabled:hover:text-ink-900 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900 dark:disabled:hover:text-bone-50 inline-flex size-11 items-center justify-center rounded-full ring-1 transition-colors duration-300 disabled:opacity-30 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -366,29 +357,26 @@ export function Gallery() {
           paddingLeft: "var(--gallery-pad)",
           paddingRight: "var(--gallery-pad)",
           // 1.5rem on mobile, 3rem on >=sm, then center-align inside max-w-[1440px]
-          ["--gallery-pad" as string]:
-            "max(1.5rem, calc((100vw - 1440px) / 2 + 3rem))",
+          ["--gallery-pad" as string]: "max(1.5rem, calc((100vw - 1440px) / 2 + 3rem))",
         }}
       >
         {projects.map((p, i) => (
           <article
             key={p.index}
             data-card
-            className="snap-start shrink-0 w-[92vw] sm:w-[80vw] lg:w-[68vw] xl:w-[60vw] max-w-[1100px]"
+            className="w-[92vw] max-w-[1100px] shrink-0 snap-start sm:w-[80vw] lg:w-[68vw] xl:w-[60vw]"
           >
             <header className="grid grid-cols-1 gap-4 md:grid-cols-[auto_1fr] md:items-end md:gap-12">
               <div>
                 <p className="text-caption tracking-label text-burgundy-600 dark:text-burgundy-400">
                   {p.index} · {p.year}
                 </p>
-                <h3 className="mt-4 text-h4 font-semibold tracking-tight sm:text-h3">
-                  {p.name}
-                </h3>
-                <p className="mt-2 text-caption tracking-label text-ink-500 dark:text-bone-50/55">
+                <h3 className="text-h4 sm:text-h3 mt-4 font-semibold tracking-tight">{p.name}</h3>
+                <p className="text-caption tracking-label text-ink-500 dark:text-bone-50/55 mt-2">
                   {p.location.toUpperCase()}
                 </p>
               </div>
-              <p className="max-w-md text-small text-ink-500 sm:text-body md:justify-self-end dark:text-bone-50/65">
+              <p className="text-small text-ink-500 sm:text-body dark:text-bone-50/65 max-w-md md:justify-self-end">
                 {p.preamble}
               </p>
             </header>
@@ -401,7 +389,7 @@ export function Gallery() {
                 image={p.images[0]}
                 onOpen={openLightbox}
                 refMap={imageButtonRefs}
-                className="aspect-[4/3] sm:aspect-auto sm:col-span-4 sm:row-span-6"
+                className="aspect-[4/3] sm:col-span-4 sm:row-span-6 sm:aspect-auto"
                 sizes="(min-width:1024px) 45vw, 92vw"
               />
               <div className="grid grid-cols-2 gap-3 sm:contents">
@@ -411,7 +399,7 @@ export function Gallery() {
                   image={p.images[1]}
                   onOpen={openLightbox}
                   refMap={imageButtonRefs}
-                  className="aspect-[4/3] sm:aspect-auto sm:col-span-2 sm:row-span-3"
+                  className="aspect-[4/3] sm:col-span-2 sm:row-span-3 sm:aspect-auto"
                   sizes="(min-width:1024px) 22vw, 45vw"
                 />
                 <ImageWell
@@ -420,17 +408,16 @@ export function Gallery() {
                   image={p.images[2]}
                   onOpen={openLightbox}
                   refMap={imageButtonRefs}
-                  className="aspect-[4/3] sm:aspect-auto sm:col-span-2 sm:row-span-3"
+                  className="aspect-[4/3] sm:col-span-2 sm:row-span-3 sm:aspect-auto"
                   sizes="(min-width:1024px) 22vw, 45vw"
                 />
               </div>
             </div>
 
             {/* Counter */}
-            <div className="mt-4 flex items-center justify-between text-caption tracking-label text-ink-500 dark:text-bone-50/55">
+            <div className="text-caption tracking-label text-ink-500 dark:text-bone-50/55 mt-4 flex items-center justify-between">
               <span>
-                {String(i + 1).padStart(2, "0")} /{" "}
-                {String(projects.length).padStart(2, "0")}
+                {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
               </span>
               <span>3 IMAGES</span>
             </div>
@@ -439,19 +426,17 @@ export function Gallery() {
       </div>
 
       {/* Progress rail */}
-      <div className="mx-auto max-w-[1440px] px-6 pb-20 sm:px-12 sm:pb-32">
+      <div className="mx-auto max-w-360 px-6 pb-20 sm:px-12 sm:pb-32">
         <div className="mt-2 flex items-center gap-6">
-          <div className="relative h-px flex-1 bg-ink-900/10 dark:bg-bone-50/10">
+          <div className="bg-ink-900/10 dark:bg-bone-50/10 relative h-px flex-1">
             <div
-              className="absolute left-0 top-0 h-px bg-burgundy-600 transition-[width] duration-200 ease-out dark:bg-burgundy-400"
+              className="bg-burgundy-600 dark:bg-burgundy-400 absolute top-0 left-0 h-px transition-[width] duration-200 ease-out"
               style={{
                 width: `${Math.max(0.06, progress * (1 - 1 / projects.length) + 1 / projects.length) * 100}%`,
               }}
             />
           </div>
-          <span className="text-caption tracking-label text-ink-500 dark:text-bone-50/55">
-            DRAG ⇠⇢
-          </span>
+          <span className="text-caption tracking-label text-ink-500 dark:text-bone-50/55">DRAG ⇠⇢</span>
         </div>
       </div>
 
@@ -484,15 +469,7 @@ type ImageWellProps = {
   sizes?: string;
 };
 
-function ImageWell({
-  pIndex,
-  iIndex,
-  image,
-  onOpen,
-  refMap,
-  className = "",
-  sizes,
-}: ImageWellProps) {
+function ImageWell({ pIndex, iIndex, image, onOpen, refMap, className = "", sizes }: ImageWellProps) {
   const key = `${pIndex}:${iIndex}`;
   return (
     <button
@@ -503,7 +480,7 @@ function ImageWell({
       }}
       onClick={() => onOpen(key)}
       aria-label={`Open image: ${image.alt}`}
-      className={`group relative block w-full overflow-hidden rounded-2xl bg-ink-900/5 ring-1 ring-ink-900/10 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burgundy-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bone-50 dark:bg-bone-50/5 dark:ring-bone-50/10 dark:focus-visible:ring-offset-ink-900 ${className}`}
+      className={`group bg-ink-900/5 ring-ink-900/10 focus-visible:ring-burgundy-500 focus-visible:ring-offset-bone-50 dark:bg-bone-50/5 dark:ring-bone-50/10 dark:focus-visible:ring-offset-ink-900 relative block w-full cursor-zoom-in overflow-hidden rounded-2xl ring-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none ${className}`}
     >
       <Image
         src={image.src}
@@ -515,7 +492,7 @@ function ImageWell({
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-full bg-ink-900/55 text-bone-50 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+        className="bg-ink-900/55 text-bone-50 pointer-events-none absolute top-3 right-3 inline-flex size-9 items-center justify-center rounded-full opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
       >
         <svg
           viewBox="0 0 24 24"

@@ -23,22 +23,19 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="border-t border-ink-900/10 dark:border-bone-50/10">
-      <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-32">
+    <section className="border-ink-900/10 dark:border-bone-50/10 border-t">
+      <div className="mx-auto max-w-360 px-6 py-20 sm:px-12 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <div>
-            <p className="reveal label">(06) - Process</p>
+            <p className="reveal label">Process</p>
             <h2 className="reveal d1 section-title mt-8">
               One contract.
               <br />
-              <span className="font-light italic text-burgundy-600 dark:text-burgundy-300">
-                One number to call.
-              </span>
+              <span className="text-burgundy-600 dark:text-burgundy-300 font-light italic">One number to call.</span>
             </h2>
-            <p className="reveal d2 mt-8 max-w-md text-body-lg text-ink-500 dark:text-bone-50/70">
-              Most projects fail at the seams between trades. We don&rsquo;t
-              have seams - every discipline reports through one project lead, on
-              one schedule, against one budget.
+            <p className="reveal d2 text-body-lg text-ink-500 dark:text-bone-50/70 mt-8 max-w-md">
+              Most projects fail at the seams between trades. We don&rsquo;t have seams - every discipline reports
+              through one project lead, on one schedule, against one budget.
             </p>
           </div>
 
@@ -47,21 +44,13 @@ export function Process() {
               <li
                 key={s.n}
                 className={`reveal d${Math.min(i + 1, 4)} grid grid-cols-[auto_1fr] gap-6 py-8 sm:gap-10 ${
-                  i !== 0
-                    ? "border-t border-ink-900/10 dark:border-bone-50/10"
-                    : ""
+                  i !== 0 ? "border-ink-900/10 dark:border-bone-50/10 border-t" : ""
                 }`}
               >
-                <span className="text-caption tracking-label text-burgundy-600 dark:text-burgundy-400">
-                  {s.n}
-                </span>
+                <span className="text-caption tracking-label text-burgundy-600 dark:text-burgundy-400">{s.n}</span>
                 <div>
-                  <h3 className="text-h5 font-semibold tracking-tight">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-small text-ink-500 dark:text-bone-50/60">
-                    {s.desc}
-                  </p>
+                  <h3 className="text-h5 font-semibold tracking-tight">{s.title}</h3>
+                  <p className="text-small text-ink-500 dark:text-bone-50/60 mt-3">{s.desc}</p>
                 </div>
               </li>
             ))}

@@ -30,30 +30,22 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section
-      id="projects"
-      className="border-t border-ink-900/10 dark:border-bone-50/10"
-    >
-      <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-32">
+    <section id="projects" className="border-ink-900/10 dark:border-bone-50/10 border-t">
+      <div className="mx-auto max-w-360 px-6 py-20 sm:px-12 sm:py-32">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <p className="reveal label">(05) - Recent</p>
+            <p className="reveal label">Recent</p>
             <h2 className="reveal d1 section-title mt-8">
               A few we&rsquo;re{" "}
-              <span className="font-light italic text-burgundy-600 dark:text-burgundy-300">
-                proud of.
-              </span>
+              <span className="text-burgundy-600 dark:text-burgundy-300 font-light italic">proud of.</span>
             </h2>
           </div>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {projects.map((p, i) => (
-            <article
-              key={p.name}
-              className={`reveal d${Math.min(i + 1, 3)} group`}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-ink-900/10 dark:ring-bone-50/10">
+            <article key={p.name} className={`reveal d${Math.min(i + 1, 3)} group`}>
+              <div className="ring-ink-900/10 dark:ring-bone-50/10 relative aspect-[4/5] overflow-hidden rounded-3xl ring-1">
                 <Image
                   src={p.src}
                   alt={p.name}
@@ -64,17 +56,15 @@ export function Projects() {
               </div>
               <div className="mt-6 flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-body-lg font-medium tracking-tight">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2 text-caption tracking-label text-ink-500 dark:text-bone-50/55">
+                  <h3 className="text-body-lg font-medium tracking-tight">{p.name}</h3>
+                  <p className="text-caption tracking-label text-ink-500 dark:text-bone-50/55 mt-2">
                     ({p.location}) · {p.type}
                   </p>
                 </div>
                 <a
                   href="#"
                   aria-label={`Open ${p.name}`}
-                  className="inline-flex size-10 shrink-0 items-center justify-center rounded-full ring-1 ring-ink-900/15 text-ink-900 transition-colors duration-300 hover:bg-ink-900 hover:text-bone-50 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900"
+                  className="ring-ink-900/15 text-ink-900 hover:bg-ink-900 hover:text-bone-50 dark:text-bone-50 dark:ring-bone-50/20 dark:hover:bg-bone-50 dark:hover:text-ink-900 inline-flex size-10 shrink-0 items-center justify-center rounded-full ring-1 transition-colors duration-300"
                 >
                   <svg
                     viewBox="0 0 14 14"

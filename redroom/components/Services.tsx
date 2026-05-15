@@ -110,40 +110,34 @@ const services: Service[] = [
 
 export function Services() {
   return (
-    <section className="border-t border-ink-900/10 dark:border-bone-50/10">
-      <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-32">
+    <section className="border-ink-900/10 dark:border-bone-50/10 border-t">
+      <div className="mx-auto max-w-360 px-6 py-20 sm:px-12 sm:py-32">
         <div className="max-w-2xl">
-          <p className="reveal label">(03) - Services</p>
+          <p className="reveal label">Services</p>
           <h2 className="reveal d1 section-title mt-8">
             Every branch
             <br /> of the trade.
           </h2>
-          <p className="reveal d2 mt-8 text-body-lg text-ink-500 dark:text-bone-50/70">
-            From rough-in to final styling, a single point of responsibility,
-            eight disciplines in one room, the redroom.
+          <p className="reveal d2 text-body-lg text-ink-500 dark:text-bone-50/70 mt-8">
+            From rough-in to final styling, a single point of responsibility, eight disciplines in one room, the
+            redroom.
           </p>
         </div>
 
-        <div className="reveal d2 mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-ink-900/10 ring-1 ring-ink-900/10 sm:grid-cols-2 lg:grid-cols-4 dark:bg-bone-50/10 dark:ring-bone-50/10">
+        <div className="reveal d2 bg-ink-900/10 ring-ink-900/10 dark:bg-bone-50/10 dark:ring-bone-50/10 mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl ring-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <article
               key={s.n}
-              className="group relative flex flex-col bg-bone-50 p-8 transition-colors duration-300 hover:bg-bone-100 md:p-10 dark:bg-ink-900 dark:hover:bg-ink-800"
+              className="group bg-bone-50 hover:bg-bone-100 dark:bg-ink-900 dark:hover:bg-ink-800 relative flex flex-col p-8 transition-colors duration-300 md:p-10"
             >
               <div className="flex items-start justify-between">
-                <span className="text-caption tracking-label text-burgundy-600 dark:text-burgundy-400">
-                  {s.n}
-                </span>
-                <span className="text-ink-900/70 transition-colors duration-300 group-hover:text-burgundy-600 dark:text-bone-50/70 dark:group-hover:text-burgundy-300">
+                <span className="text-caption tracking-label text-burgundy-600 dark:text-burgundy-400">{s.n}</span>
+                <span className="text-ink-900/70 group-hover:text-burgundy-600 dark:text-bone-50/70 dark:group-hover:text-burgundy-300 transition-colors duration-300">
                   {s.icon}
                 </span>
               </div>
-              <h3 className="mt-16 text-h5 font-semibold tracking-tight">
-                {s.name}
-              </h3>
-              <p className="mt-3 text-small text-ink-500 dark:text-bone-50/55">
-                {s.desc}
-              </p>
+              <h3 className="text-h5 mt-16 font-semibold tracking-tight">{s.name}</h3>
+              <p className="text-small text-ink-500 dark:text-bone-50/55 mt-3">{s.desc}</p>
             </article>
           ))}
         </div>
